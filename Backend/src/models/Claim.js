@@ -12,14 +12,17 @@ const claimSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    message: String,
+    message: {
+      type: String, // claimant's answer to the claimQuestion / proof of ownership
+      trim: true,
+    },
     status: {
       type: String,
       enum: ["pending", "approved", "rejected"],
       default: "pending",
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Claim", claimSchema);
