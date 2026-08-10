@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f4f0;
+  --color-card: #ffffff;
+  --color-ink: #1c1b1a;
+  --color-ink-soft: #6b6862;
+  --color-line: #dedad0;
+  --color-lost: #b8763a;
+  --color-lost-soft: #f3e4d3;
+  --color-found: #2f6b5e;
+  --color-found-soft: #dceae6;
+
+  --font-display: "Fraunces", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-body: "IBM Plex Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Ticket stub signature element --- */
+
+.ticket {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-perforation {
+  position: relative;
+  height: 0;
+  border-top: 1.5px dashed var(--color-line);
+  margin: 0 14px;
+}
+
+.ticket-perforation::before,
+.ticket-perforation::after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-paper);
+  border-radius: 50%;
+}
+
+.ticket-perforation::before {
+  left: -21px;
+}
+
+.ticket-perforation::after {
+  right: -21px;
+}
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  transform: rotate(-2deg);
+}
+
+.stamp-lost {
+  background: var(--color-lost-soft);
+  color: var(--color-lost);
+}
+
+.stamp-found {
+  background: var(--color-found-soft);
+  color: var(--color-found);
+}
+
+.input {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--color-ink);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-ink-soft);
+}
